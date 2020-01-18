@@ -14,9 +14,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 
 
 const update = async function () {
-    let { feedOptions, feedData, latestData } = await browser.storage.local.get({ feedOptions: [], feedData: [], latestData: {} });
-
-    console.log(feedData);
+    let { feedOptions, latestData } = await browser.storage.local.get({ feedOptions: [], latestData: {} });
     console.log(feedOptions);
 
 
@@ -64,24 +62,20 @@ const update = async function () {
             const data = res.result;
             const hash = res.hash;
             console.log(data);
-            console.log(feedData);
             console.log(each);
 
 
 
-            if ((!(each.id in latestData)) || hash !== feedData[latestData[each.id]].hash) {
-                feedData.push({
+            if ((!(each.id in latestData)) || hash !== latestData[each.id].hash) {
+                latestData[each.id] = {
                     time: helpers.currentEpoch(),
                     data,
-                    htmlHash: hash,
-                    associatedFeed: each.id,
-                });
-                latestData[each.id] = feedData.length-1;
+                    hash,
+                };
             }
         }
     }
     await browser.storage.local.set({
-        feedData,
         latestData
     });
     setTimeout(update,5000);
