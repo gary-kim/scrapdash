@@ -19,12 +19,12 @@ For Firefox
 ````bash
 npm i
 npm run webpack:dev:firefox
-```
+````
 For Chrome
 ````bash
 npm i
 npm run webpack:dev:chromium
-```
+````
 
 ## License
 Unlicensed
