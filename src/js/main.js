@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const CssSelectorGenerator = require('css-selector-generator');
-// const browser = require('webextension-polyfill');
+const browser = require('webextension-polyfill');
 
 // alert('hello world');
 function main() {
@@ -70,7 +70,7 @@ function main() {
 
     }
     document.addEventListener('mousemove', drawBox);
-    let selectFunc = function (event) {
+    let selectFunc = async function (event) {
 
         if (event.target.id.indexOf('selector') !== -1 || event.target.tagName === 'BODY' || event.target.tagName === 'HTML') return;
 
@@ -81,18 +81,19 @@ function main() {
 
         let selector = generator.getSelector(event.target); //=> #login
         console.log(selector);
-        chrome.storage.local.get({ feedOptions: [], counter: 0 }, function ({ feedOptions, counter }) {
-            console.log(feedOptions);
-            
-            chrome.storage.local.set({
-                feedOptions: [...feedOptions, {
-                    id: counter,
-                    url: window.location.href,
-                    selector,
-                    type: 'plain',
-                }],
-                counter: counter+1,
-            });
+        let { feedOptions, counter } = await browser.storage.local.get({ feedOptions: [], counter: 0 });
+        console.log(feedOptions);
+        feedOptions.push({
+            id: counter,
+            url: window.location.href,
+            selector,
+            type: 'screenshot',
+        });
+        
+
+        await browser.storage.local.set({
+            feedOptions,
+            counter: counter + 1,
         });
 
         document.removeEventListener('mousemove', drawBox);

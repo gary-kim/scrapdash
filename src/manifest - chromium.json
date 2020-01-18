@@ -7,7 +7,7 @@
     "homepage_url":"https://github.com/gary-kim/scraper-dashboard/",
     "description": "Scraper Dashboard",
     "permissions": [
-        "activeTab", "nativeMessaging", "tabs", "history", "bookmarks", "storage", "sessions", "downloads", "topSites", "downloads.shelf", "clipboardRead", "clipboardWrite", "webNavigation","https://*/*", "<all_urls>"
+        "activeTab", "nativeMessaging", "tabs", "history", "bookmarks", "storage", "sessions", "downloads", "topSites", "downloads.shelf", "clipboardRead", "clipboardWrite", "webNavigation","https://*/*", "<all_urls>", "unlimitedStorage"
     ],
     "icons": {
         "128": "icons/128.png"

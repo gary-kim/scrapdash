@@ -7,6 +7,7 @@ src/web_accessible_resources/libraries.txt
 
 # Node
 node_modules/
+host/node_modules/
 
 # Testing Files
 chromiumtest/
