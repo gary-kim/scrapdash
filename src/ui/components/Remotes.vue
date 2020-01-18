@@ -45,6 +45,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.md-card {
+    margin: 10px;
 
+    .md-card-header * {
+        display: block ruby;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+}
 </style>

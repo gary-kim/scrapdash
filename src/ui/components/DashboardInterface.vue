@@ -1,15 +1,15 @@
 <template>
     <div class="dashboard-wrapper">
+        <span slot="header" class="max-adjust-buttons">
+            <md-button class="md-icon-button" @click="adjustDashboardMax(1)">
+                <md-icon>add</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" @click="adjustDashboardMax(-1)">
+                <md-icon>remove</md-icon>
+            </md-button>
+        </span>
         <Draggable v-model="options" class="draggable-flex" animation="100" draggable=".feed-event">
             <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" :feed="e" class="feed-event" :style="{width: width}" :dashboard-mode="true" />
-            <div slot="header" class="max-adjust-buttons">
-                <md-button class="md-icon-button" @click="adjustDashboardMax(1)">
-                    <md-icon>add</md-icon>
-                </md-button>
-                <md-button class="md-icon-button" @click="adjustDashboardMax(-1)">
-                    <md-icon>remove</md-icon>
-                </md-button>
-            </div>
         </Draggable>
     </div>
 </template>
@@ -39,7 +39,7 @@ export default {
             }
         },
         width() {
-            return `calc(${(100 / this.feed.settings.dashboardMax) - 3}% - ${80 / this.feed.settings.dashboardMax}px)`;
+            return `${(100 / this.feed.settings.dashboardMax) - 3}%`;
         }
     },
     methods: {
@@ -58,10 +58,10 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .max-adjust-buttons {
-    display: flex;
-    flex-direction: column;
+    display: inherit;
     * {
         align-self: center;
         margin: 0;

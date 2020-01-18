@@ -49,7 +49,5 @@
     }
 </script>
 <style lang="less" scoped>
-.md-app-content {
-    background-color: rgb(30, 34, 29) !important;
-}
+
 </style>
