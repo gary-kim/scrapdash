@@ -1,9 +1,7 @@
 <template>
     <div>
         <h1>Scrapdash Feed</h1>
-        {{ currentFeed }}
         <template v-for="feed in currentFeed">
-            Loaded
             <FeedEvent :current="feed" />
         </template>
     </div>
@@ -20,7 +18,7 @@ export default {
     },
     data() {
         return {
-            currentFeed: helpers.getFeedData()
+            currentFeed: helpers.feedData
         }
     }
 }

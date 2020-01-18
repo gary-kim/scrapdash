@@ -1,7 +1,7 @@
 const browser = require('webextension-polyfill');
 
-let feedData;
-let feedOptions;
+export let feedData;
+export let feedOptions;
 
 /**
  * Update cached feed info
@@ -16,11 +16,11 @@ preloadData();
 
 /**
  * Get the feed associated with a feedItem
- * @param {Number} associatedFeed id
+ * @param {Number} feedItem
  * @returns {Object|undefined} associated feed from feedOptions
  */
-export function getAssociatedOrigin(associatedFeed) {
-    return feedOptions.filter(e => e.id === associatedFeed);
+export function getAssociatedOrigin(feedItem) {
+    return feedOptions.filter(e => e.id === feedItem.associatedFeed)[0];
 }
 
 export function getFeedData() {
@@ -44,7 +44,7 @@ export function currentEpoch() {
  * @param feedItem
  */
 export function getFeedDate(feedItem) {
-    return new Date(feedItem);
+    return new Date(feedItem.time * 1000);
 }
 
 browser.storage.onChanged.addListener(preloadData);

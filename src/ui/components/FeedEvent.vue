@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h5>THis is a feed</h5>
+    <div class="card">
         <h3>{{ associatedFeed }} | {{ time }}</h3>
         <div>{{ current.data }}</div>
     </div>
@@ -20,13 +19,18 @@ export default {
     },
     data() {
         return {
-            associatedFeed: helpers.getAssociatedOrigin(this.current),
+            associatedFeed: helpers.getAssociatedOrigin(this.current).url,
             time: helpers.getFeedDate(this.current),
         }
     }
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+.card {
+    padding: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 0px 0px #52BFB9;
+    border: 1px solid #52BFB9;
+}
 </style>
