@@ -22,6 +22,14 @@ function atob(str) {
   }));
   await page.setCookie(...cookies);
   await page.goto(process.argv[2]);
+  try {
+    await page.waitForNavigation({
+      timeout: 10000,
+      waitUntil: 'networkidle0',
+    });
+  } catch (err) {
+
+  }
   const el = await page.$(process.argv[3]);
   const htmlVal = await page.$eval(process.argv[3], el => el.innerHTML);
   let md5sum = crypto.createHash('md5');
