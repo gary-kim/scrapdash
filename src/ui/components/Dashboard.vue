@@ -5,7 +5,7 @@
                 <div class="md-toolbar-row">
                     <span class="md-title">Scrapdash</span>
                     <md-tabs class="md-primary">
-                        <md-tab id="tab-dashboard" md-label="Dashboard" @click="mode = Constants.Dashboard.Mode.Dashboard"></md-tab>
+                        <md-tab id="tab-dashboard" md-label="Dashboard" @click="mode = Constants.Dashboard.Mode.DASHBOARD"></md-tab>
                         <md-tab id="tab-feed" md-label="Feed" @click="mode = Constants.Dashboard.Mode.FEED"></md-tab>
                     </md-tabs>
                 </div>
