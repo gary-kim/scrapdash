@@ -3,22 +3,24 @@ const browser = require('webextension-polyfill');
 export let feed = {
     data: [],
     options: [],
+    latestData: [],
 };
 
 /**
  * Update cached feed info
  */
 async function preloadData() {
-    const data = await browser.storage.local.get({feedData: [], feedOptions: []});
+    const data = await browser.storage.local.get({feedData: [], feedOptions: [], latestData: []});
     feed.data = data.feedData;
     feed.options = data.feedOptions;
+    feed.latestData = data.latestData;
 }
 
 preloadData();
 
 /**
  * Get the feed associated with a feedItem
- * @param {Number} feedItem
+ * @param {Object} feedItem
  * @returns {Object|undefined} associated feed from feedOptions
  */
 export function getAssociatedOrigin(feedItem) {

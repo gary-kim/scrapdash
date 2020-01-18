@@ -1,7 +1,9 @@
 <template>
-    <Draggable v-model="options">
-        <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" />
-    </Draggable>
+    <div>
+        <Draggable v-model="options">
+            <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" />
+        </Draggable>
+    </div>
 </template>
 
 <script>
@@ -31,7 +33,7 @@ export default {
     },
     methods: {
         getLatest(feedOption) {
-            return this.feed.data[feedOption.latestData];
+            return this.feed.data[this.feed.latestData[feedOption.id]];
         }
     }
 }

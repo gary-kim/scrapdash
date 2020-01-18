@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            associatedFeed: helpers.getAssociatedOrigin(this.current).url,
+            associatedFeed: (helpers.getAssociatedOrigin(this.current) || { url: "Remote Lost" }).url,
             time: helpers.getFeedDate(this.current),
         }
     }
