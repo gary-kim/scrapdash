@@ -1,4 +1,4 @@
-# Scraper Dashboard
+# Scrapdash
 
 A browser extension that creates a dashboard page with configuration to pull information out of websites and scripts, including (but not limited to) grades, calendars, etc.
 
