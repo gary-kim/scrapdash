@@ -34,7 +34,7 @@ def log(msg):
   # sys.stderr.flush()
 
 def call_js(param):
-    sh = subprocess.Popen([dir_path+'/main.js', param['url'], param['selector']], stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+    sh = subprocess.Popen([dir_path+'/main.js', param['url'], param['selector'], param['cookies']], stdout=subprocess.PIPE, stdin=subprocess.PIPE)
     # data, _ = sh.communicate(input='\n'.join(map(lambda x: x.encode('utf8'), options)))
     return sh.stdout.read().strip()
 
@@ -82,9 +82,11 @@ def main():
     cmd = data['cmd']
     param = data['param']
     if cmd == 'js':
+      data = call_js(param).split('\n')
       output = {
         'cmd': 'js',
-        'result': call_js(param)
+        'result': data[0],
+        'hash': data[1]
       }
     else:
       output = {

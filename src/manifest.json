@@ -22,7 +22,8 @@
         "webNavigation",
         "https://*/*", 
         "<all_urls>",
-        "unlimitedStorage"
+        "unlimitedStorage",
+        "cookies"
     ],
     "icons": {
         "128": "icons/128.png"
