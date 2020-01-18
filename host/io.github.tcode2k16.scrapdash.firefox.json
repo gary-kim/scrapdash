@@ -3,7 +3,7 @@
   "description": "Scrapdash",
   "path": "HOST_PATH",
   "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://fpnigbfaeedgimfiikneijmgkopnokhh/",
+  "allowed_extensions": [
+    "scrapdash@garykim.dev"
   ]
 }

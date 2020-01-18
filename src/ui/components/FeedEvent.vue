@@ -4,8 +4,12 @@
             <div class="md-title">{{ associatedFeed }}</div>
             <div v-if="'time' in current" class="md-subhead">{{ time }}</div>
         </md-card-header>
-        <md-card-content v-if="'data' in current" v-html="current.data" />
-        <md-card-content v-if="! ('data' in current)" v-html="'<p>Data is currently being fetched.</p>'" />
+        <md-card-content v-if="'data' in current">
+            <img :src="'data:image/png;base64,' + current.data" />
+        </md-card-content>
+        <md-card-content v-if="! ('data' in current)">
+            Data is currently being fetched
+        </md-card-content>
     </md-card>
 </template>
 
@@ -34,7 +38,7 @@ export default {
         time() {
             return moment(helpers.getFeedDate(this.current)).fromNow();
         },
-        
+
         associatedFeed() {
             if (!this.feed) {
                 return "Remote Lost";

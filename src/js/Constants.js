@@ -8,7 +8,7 @@ const Constants = {
     },
     "FeedData": {
         "Type": {
-            "IMAGE": 0,
+            "SCREENSHOT": 0,
             "TEXT": 1,
             "HTML": 2
         }

@@ -33,7 +33,6 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             if (curr.type === 'screenshot') {
                 let cookies = await browser.cookies.getAll({ url: curr.url });
                 console.log('hi');
-
                 let res = await browser.runtime.sendNativeMessage(hostName, {
                     cmd: 'js',
                     param: {
