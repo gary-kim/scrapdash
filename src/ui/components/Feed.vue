@@ -1,7 +1,7 @@
 <template>
     <div>
-        <template v-for="feed in currentFeed">
-            <FeedEvent :current="feed" :key="feed" />
+        <template v-for="(feed, index) in currentFeed">
+            <FeedEvent :current="feed" :key="index" />
         </template>
     </div>
 </template>
