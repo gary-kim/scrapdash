@@ -3,7 +3,7 @@
         <div class="title">
             <h1>Scrapdash Feed</h1>
         </div>
-        <template v-for="feed in currentFeed">
+        <template v-for="feed in currentFeed.slice().reverse()">
             <FeedEvent :current="feed" />
         </template>
     </div>
