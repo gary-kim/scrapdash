@@ -83,7 +83,7 @@ function main() {
         console.log(selector);
         let { feedOptions, counter } = await browser.storage.local.get({ feedOptions: [], counter: 0 });
         console.log(feedOptions);
-        feedOptions.push({
+        feedOptions.unshift({
             id: counter,
             url: window.location.href,
             selector,
