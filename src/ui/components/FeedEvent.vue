@@ -32,5 +32,7 @@ export default {
     background-color: #FFFFFF;
     box-shadow: 2px 2px 0px 0px #52BFB9;
     border: 1px solid #52BFB9;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
 }
 </style>
