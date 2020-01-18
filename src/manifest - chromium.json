@@ -1,0 +1,36 @@
+{
+    "manifest_version": 2,
+    "name": "Scraper Dashboard",
+    "short_name": "SCD",
+    "version": "SET_DURING_BUILD",
+    "author": "TBD",
+    "homepage_url":"https://github.com/gary-kim/scraper-dashboard/",
+    "description": "Scraper Dashboard",
+    "permissions": [
+        "storage",
+        "clipboardWrite",
+        "clipboardRead"
+    ],
+    "icons": {
+        "128": "icons/128.png"
+    },
+    "options_ui": {
+        "page": "ui/options.html"
+    },
+    "web_accessible_resources": [
+        "/ui/historygrades.*",
+        "/icons/*",
+        "/web_accessible_resources/"
+    ],
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*"],
+            "js": ["js/content.js"],
+            "css": ["css/spse.css"],
+            "run_at": "document_end"
+        }
+    ]
+}

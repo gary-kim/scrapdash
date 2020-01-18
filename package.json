@@ -1,0 +1,79 @@
+{
+  "name": "scraper-dashboard",
+  "version": "0.0.1",
+  "version_name": "Closed Beta 0.0.1",
+  "private": true,
+  "description": "Scraper Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx eslint --ext .js,.vue src && npx ava",
+    "test:build": "npx web-ext lint",
+    "eslint": "npx eslint --ext .js,.vue src",
+    "libraries": "mkdir -p src/web_accessible_resources && yarn licenses --silent generate-disclaimer > src/web_accessible_resources/libraries.txt",
+    "package": "npx web-ext build",
+    "webpack:build:chromium": "npx webpack --progress --config webpack.chromium.js",
+    "webpack:build:firefox": "npx webpack --progress --config webpack.firefox.js",
+    "webpack:dev:firefox": "npx webpack --progress --watch --config webpack.firefox.dev.js",
+    "webpack:dev:chromium": "npx webpack --progress --watch --config webpack.chromium.dev.js",
+    "integration:chromium": "npm run clean && npm run webpack:build:chromium && npm run package && npx nightwatch --env chromium",
+    "integration:firefox": "npm run clean && npm run webpack:build:firefox && npm run package && npx nightwatch --env firefox",
+    "clean": "rm -r dist artifacts || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gary-kim/scraper-dashboard.git"
+  },
+  "author": "TO SET",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/gary-kim/scraper-dashboard/issues"
+  },
+  "homepage": "https://github.com/gary-kim/scraper-dashboard#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/register": "^7.6.2",
+    "ava": "^2.4.0",
+    "babel-loader": "^8.0.6",
+    "chromedriver": "^78.0.1",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-vue": "^5.2.3",
+    "geckodriver": "^1.19.1",
+    "jszip": "^2.6.1",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "nightwatch": "^1.2.4",
+    "rewire": "^4.0.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "web-ext": "^3.1.1",
+    "webextension-polyfill": "^0.5.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "get-in-range": "^0.2.4",
+    "get-key-range": "^1.0.1",
+    "jquery": "^3.4.1"
+  },
+  "webExt": {
+    "sourceDir": "dist",
+    "artifactsDir": "artifacts",
+    "lint": {
+      "selfHosted": true
+    }
+  },
+  "ava": {
+    "files": [
+      "**/__tests__/*.js"
+    ],
+    "require": [
+      "@babel/register"
+    ]
+  }
+}
