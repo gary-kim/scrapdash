@@ -20,7 +20,12 @@ export default {
     },
     data() {
         return {
-            currentFeed: helpers.feedData
+            feed: helpers.feed
+        }
+    },
+    computed: {
+        currentFeed() {
+            return this.feed.data;
         }
     }
 }

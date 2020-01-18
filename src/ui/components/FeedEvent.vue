@@ -34,5 +34,6 @@ export default {
     border: 1px solid #52BFB9;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 10px;
+    margin-top: 10px;
 }
 </style>

@@ -1,15 +1,17 @@
 const browser = require('webextension-polyfill');
 
-export let feedData;
-export let feedOptions;
+export let feed = {
+    data: [],
+    options: [],
+};
 
 /**
  * Update cached feed info
  */
 async function preloadData() {
     const data = await browser.storage.local.get({feedData: [], feedOptions: []});
-    feedData = data.feedData;
-    feedOptions = data.feedOptions;
+    feed.data = data.feedData;
+    feed.options = data.feedOptions;
 }
 
 preloadData();
@@ -20,15 +22,15 @@ preloadData();
  * @returns {Object|undefined} associated feed from feedOptions
  */
 export function getAssociatedOrigin(feedItem) {
-    return feedOptions.filter(e => e.id === feedItem.associatedFeed)[0];
+    return feed.options.filter(e => e.id === feedItem.associatedFeed)[0];
 }
 
 export function getFeedData() {
-    return feedData;
+    return feed.data;
 }
 
 export function getFeedOptions() {
-    return feedOptions;
+    return feed.options;
 }
 
 /**
