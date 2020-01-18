@@ -5,7 +5,9 @@
             <div v-if="'time' in current" class="md-subhead">{{ time }}</div>
         </md-card-header>
         <md-card-content v-if="'data' in current">
-            <img :src="'data:image/png;base64,' + current.data" />
+            <div class="images" v-viewer>
+                <img :src="'data:image/png;base64,' + current.data" />
+            </div>
         </md-card-content>
         <md-card-content v-if="! ('data' in current)">
             Data is currently being fetched
@@ -14,6 +16,11 @@
 </template>
 
 <script>
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+import Vue from 'vue'
+Vue.use(Viewer)
+
 import * as helpers from '../../js/helpers';
 import moment from 'moment';
 
