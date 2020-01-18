@@ -34,6 +34,7 @@ export default {
         time() {
             return moment(helpers.getFeedDate(this.current)).fromNow();
         },
+        
         associatedFeed() {
             if (!this.feed) {
                 return "Remote Lost";
