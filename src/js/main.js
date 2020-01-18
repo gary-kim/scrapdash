@@ -5,7 +5,7 @@ const CssSelectorGenerator = require('css-selector-generator');
 
 // alert('hello world');
 function main() {
-    
+    if ($('.scrapdash').length > 0) return;
     $('body').append(`
         <style class="scrapdash">
         #selector-top, #selector-bottom {
@@ -32,7 +32,7 @@ function main() {
             <div id="selector-bottom"></div>
         </div>
     `);
-    var elements = {
+    let elements = {
         top: $('#selector-top'),
         left: $('#selector-left'),
         right: $('#selector-right'),
@@ -70,24 +70,41 @@ function main() {
 
     }
     document.addEventListener('mousemove', drawBox);
-    document.addEventListener('mousedown', function (event) {
-        
+    let selectFunc = function (event) {
+
         if (event.target.id.indexOf('selector') !== -1 || event.target.tagName === 'BODY' || event.target.tagName === 'HTML') return;
 
         let $target = $(event.target);
-        
-        
+
+
         let generator = new CssSelectorGenerator;
 
         let selector = generator.getSelector(event.target); //=> #login
         console.log(selector);
-        
+        chrome.storage.local.get({ feedOptions: [], counter: 0 }, function ({ feedOptions, counter }) {
+            console.log(feedOptions);
+            
+            chrome.storage.local.set({
+                feedOptions: [...feedOptions, {
+                    id: counter,
+                    url: window.location.href,
+                    selector,
+                    type: 'plain',
+                }],
+                counter: counter+1,
+            });
+        });
+
         document.removeEventListener('mousemove', drawBox);
+
         for (let each of $('.scrapdash')) {
             each.remove();
         }
-        
-    });
+        document.removeEventListener('mousedown', selectFunc);
+
+
+    }
+    document.addEventListener('mousedown', selectFunc);
 }
 
 main();

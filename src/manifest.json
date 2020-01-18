@@ -4,10 +4,24 @@
     "short_name": "SCD",
     "version": "SET_DURING_BUILD",
     "author": "TBD",
-    "homepage_url":"https://github.com/gary-kim/scraper-dashboard/",
+    "homepage_url": "https://github.com/gary-kim/scraper-dashboard/",
     "description": "Scraper Dashboard",
     "permissions": [
-        "activeTab", "nativeMessaging", "tabs", "history", "bookmarks", "storage", "sessions", "downloads", "topSites", "downloads.shelf", "clipboardRead", "clipboardWrite", "webNavigation"
+        "activeTab",
+        "nativeMessaging",
+        "tabs",
+        "history",
+        "bookmarks",
+        "storage",
+        "sessions",
+        "downloads",
+        "topSites",
+        "downloads.shelf",
+        "clipboardRead",
+        "clipboardWrite",
+        "webNavigation",
+        "https://*/*", 
+        "<all_urls>"
     ],
     "icons": {
         "128": "icons/128.png"
@@ -22,8 +36,12 @@
         "/web_accessible_resources/"
     ],
     "background": {
-        "scripts": ["js/background.js"]
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "chrome_url_overrides": {
+        "newtab": "ui/dashboard.html"
     },
     "browser_action": {}
-
 }

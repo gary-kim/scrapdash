@@ -91,7 +91,7 @@
 //             });
 //         }
 //     });
-    
+
 // }
 // function reset_analytics()    {
 //     analytics.id = random_str(16,'1234567890abcdef');
@@ -106,8 +106,46 @@
 //     return tr;
 // }
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+import * as helpers from './helpers.js';
+
+chrome.browserAction.onClicked.addListener(function (tab) {
     chrome.tabs.executeScript(tab.id, {
         file: 'js/main.js',
     });
 });
+
+
+setInterval(async function () {
+    chrome.storage.local.get({ feedOptions: [], feedData: [] }, async function ({ feedOptions, feedData, counter }) {
+        console.log(feedData);
+
+        for (let each of feedOptions) {
+            // feedData.push({
+            //     time: helpers.currentEpoch(),
+            //     data: `hello world ${helpers.currentEpoch()}`,
+            //     associatedFeed: each.id,
+            // });
+            if (each.type === 'plain') {
+                let res = await fetch(each.url);
+                let text = await res.text();
+                console.log(text);
+                let template = document.createElement('template')
+                template.innerHTML = text;
+                console.log(template);
+                console.log(each.selector);
+
+                feedData.push({
+                    time: helpers.currentEpoch(),
+                    data: template.content.querySelectorAll(each.selector)[0].innerHTML,
+                    associatedFeed: each.id,
+                });
+
+            }
+
+        }
+        chrome.storage.local.set({
+            feedData
+        });
+
+    });
+}, 1000);
