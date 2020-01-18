@@ -6,10 +6,9 @@ const package = require('./package.json');
 
 module.exports = {
     entry: {
-        'js/saspowerschoolff': path.join(__dirname, 'src', 'js', 'saspowerschoolff.js'),
+        'js/main': path.join(__dirname, 'src', 'js', 'main.js'),
         'js/background': path.join(__dirname, 'src', 'js', 'background.js'),
         'ui/options': path.join(__dirname, 'src', 'ui', 'options.js'),
-        'ui/historygrades': path.join(__dirname, 'src', 'ui', 'historygrades.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
