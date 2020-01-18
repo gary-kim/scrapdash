@@ -27,7 +27,7 @@ npm run webpack:dev:chromium
 ````
 
 ## License
-Unlicensed
+00 -- License to Kill
 
 
 
