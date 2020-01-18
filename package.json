@@ -62,7 +62,8 @@
     "css-selector-generator": "^1.2.0",
     "get-in-range": "^0.2.4",
     "get-key-range": "^1.0.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "vue-material": "^1.0.0-beta-11"
   },
   "webExt": {
     "sourceDir": "dist",

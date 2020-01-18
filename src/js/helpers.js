@@ -34,6 +34,14 @@ export function getFeedOptions() {
 }
 
 /**
+ * Set feed options
+ * @param feedOptions
+ */
+export function setFeedOptions(feedOptions) {
+    browser.storage.local.set({feedOptions: feedOptions});
+}
+
+/**
  * Get the current epoch value.
  * @returns {number}
  */
