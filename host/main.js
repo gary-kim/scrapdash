@@ -30,6 +30,7 @@ function atob(str) {
   } catch (err) {
 
   }
+  const title = await page.title();
   const el = await page.$(process.argv[3]);
   const htmlVal = await page.$eval(process.argv[3], el => el.innerHTML);
   let md5sum = crypto.createHash('md5');
@@ -38,6 +39,6 @@ function atob(str) {
 
   const img = await el.screenshot({ encoding: 'base64' });
   await browser.close();
-  console.log(`<img src="data:image/png;base64,${img}"/>\n${hash}`);
+  console.log(`<img src="data:image/png;base64,${img}"/>\n${hash}\n${title}`);
 
 })();

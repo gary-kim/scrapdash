@@ -36,10 +36,10 @@ export default {
     },
     computed: {
         associatedFeed() {
-            if (!this.origin) {
+            if (!this.feed) {
                 return "Remote Lost";
             }
-            return this.origin.title || this.origin.url;
+            return this.current.title || this.feed.url;
         }
     }
 }

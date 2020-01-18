@@ -61,6 +61,7 @@ const update = async function () {
             });
             const data = res.result;
             const hash = res.hash;
+            const title = res.title;
             console.log(data);
             console.log(each);
 
@@ -71,6 +72,7 @@ const update = async function () {
                     time: helpers.currentEpoch(),
                     data,
                     hash,
+                    title,
                 };
             }
         }
@@ -78,7 +80,7 @@ const update = async function () {
     await browser.storage.local.set({
         latestData
     });
-    setTimeout(update,5000);
+    setTimeout(update,0);
 }
 
 update();

@@ -86,7 +86,8 @@ def main():
       output = {
         'cmd': 'js',
         'result': data[0],
-        'hash': data[1]
+        'hash': data[1],
+        'title': data[2]
       }
     else:
       output = {
