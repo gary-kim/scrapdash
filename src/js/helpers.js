@@ -33,7 +33,7 @@ export function getFeedOptions() {
  * @param feedOptions
  */
 export function setFeedOptions(feedOptions) {
-    browser.storage.local.set({"feedOptions": feedOptions});
+    browser.storage.local.set({"feedOptions": JSON.parse(JSON.stringify(feedOptions))});
 }
 
 export function setDashboardMax(val) {

@@ -2,7 +2,8 @@ const Constants = {
     "Dashboard": {
         "Mode": {
             "FEED": 1,
-            "DASHBOARD": 2
+            "DASHBOARD": 2,
+            "ORIGINS": 3
         }
     },
     "FeedData": {
