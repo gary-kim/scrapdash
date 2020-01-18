@@ -27,8 +27,16 @@ export default {
     },
     data() {
         return {
-            associatedFeed: (helpers.getAssociatedOrigin(this.current) || { url: "Remote Lost" }).url,
             time: helpers.getFeedDate(this.current),
+        }
+    },
+    computed: {
+        associatedFeed() {
+            let origin = helpers.getAssociatedOrigin(this.current);
+            if (!origin) {
+                return "Remote Lost";
+            }
+            return origin.title || origin.url;
         }
     }
 }

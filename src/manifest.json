@@ -6,6 +6,11 @@
     "author": "TBD",
     "homepage_url": "https://github.com/gary-kim/scraper-dashboard/",
     "description": "Scraper Dashboard",
+    "applications": {
+        "gecko": {
+            "id": "scrapdash@garykim.dev"
+        }
+    },
     "permissions": [
         "activeTab",
         "nativeMessaging",
@@ -20,7 +25,7 @@
         "clipboardRead",
         "clipboardWrite",
         "webNavigation",
-        "https://*/*", 
+        "https://*/*",
         "<all_urls>",
         "unlimitedStorage",
         "cookies"
