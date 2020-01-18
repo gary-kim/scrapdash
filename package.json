@@ -63,6 +63,7 @@
     "get-in-range": "^0.2.4",
     "get-key-range": "^1.0.1",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "vue-material": "^1.0.0-beta-11",
     "vuedraggable": "^2.23.2"
   },

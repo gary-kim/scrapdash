@@ -10,6 +10,7 @@
 
 <script>
 import * as helpers from '../../js/helpers';
+import moment from 'moment';
 
 
 export default {
@@ -27,7 +28,7 @@ export default {
     },
     data() {
         return {
-            time: helpers.getFeedDate(this.current),
+            time: moment(helpers.getFeedDate(this.current)).fromNow(),
         }
     },
     computed: {
