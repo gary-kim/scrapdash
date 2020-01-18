@@ -7,9 +7,7 @@
     "homepage_url":"https://github.com/gary-kim/scraper-dashboard/",
     "description": "Scraper Dashboard",
     "permissions": [
-        "storage",
-        "clipboardWrite",
-        "clipboardRead"
+        "activeTab", "nativeMessaging", "tabs", "history", "bookmarks", "storage", "sessions", "downloads", "topSites", "downloads.shelf", "clipboardRead", "clipboardWrite", "webNavigation"
     ],
     "icons": {
         "128": "icons/128.png"
@@ -25,12 +23,6 @@
     "background": {
         "scripts": ["js/background.js"]
     },
-    "content_scripts": [
-        {
-            "matches": ["*"],
-            "js": ["js/main.js"],
-            "css": ["css/spse.css"],
-            "run_at": "document_end"
-        }
-    ]
+    "browser_action": {}
+
 }
