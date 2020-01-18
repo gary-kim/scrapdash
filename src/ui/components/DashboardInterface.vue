@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard-wrapper">
         <Draggable v-model="options" class="draggable-flex" animation="100" draggable=".feed-event">
-            <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" class="feed-event" :style="{width: width}" dashboard-mode="true" />
+            <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" class="feed-event" :style="{width: width}" :dashboard-mode="true" />
             <div slot="header" class="max-adjust-buttons">
                 <md-button class="md-icon-button" @click="adjustDashboardMax(1)">
                     <md-icon>add</md-icon>
