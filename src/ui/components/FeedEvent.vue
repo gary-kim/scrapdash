@@ -24,6 +24,9 @@ export default {
             type: Boolean,
             default: true,
             required: true
+        },
+        feed: {
+            type: Object
         }
     },
     data() {
@@ -33,11 +36,10 @@ export default {
     },
     computed: {
         associatedFeed() {
-            let origin = helpers.getAssociatedOrigin(this.current);
-            if (!origin) {
+            if (!this.origin) {
                 return "Remote Lost";
             }
-            return origin.title || origin.url;
+            return this.origin.title || this.origin.url;
         }
     }
 }

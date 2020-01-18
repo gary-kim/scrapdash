@@ -20,15 +20,6 @@ async function preloadData() {
 
 preloadData();
 
-/**
- * Get the feed associated with a feedItem
- * @param {Object} feedItem
- * @returns {Object|undefined} associated feed from feedOptions
- */
-export function getAssociatedOrigin(feedItem) {
-    return feed.options.filter(e => e.id === feedItem.associatedFeed)[0];
-}
-
 export function getFeedData() {
     return feed.data;
 }
