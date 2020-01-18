@@ -18,6 +18,11 @@ export default {
         current: {
             type: Object,
             required: true
+        },
+        dashboardMode: {
+            type: Boolean,
+            default: true,
+            required: true
         }
     },
     data() {
@@ -32,5 +37,11 @@ export default {
 <style lang="less" scoped>
 .md-card {
     margin: 10px;
+
+    .md-card-header * {
+        display: block ruby;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
 }
 </style>
