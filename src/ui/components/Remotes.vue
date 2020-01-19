@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <label>Remote Server: <input type="text" v-model="settings.serverURL"></label> | <label>Shared Secret: <input type="password" v-model="settings.serverSecret"></label>
+            <label>Remote Server: <input type="text" v-model="settings.serverURL" @change="setSettings"></label> | <label>Shared Secret: <input type="password" v-model="settings.serverSecret" @change="setSettings"></label>
         </div>
         <div v-for="(origin, index) in origins" :key="origin.id">
             <md-card>
@@ -52,6 +52,9 @@ export default {
         remove(index) {
             this.origins.splice(index, 1);
             this.origins = this.origins;
+        },
+        setSettings() {
+            this.settings = this.settings;
         }
     }
 }
