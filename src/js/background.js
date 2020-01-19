@@ -26,22 +26,36 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             let result = await browser.storage.local.get({ feedOptions: [] });
             for (let each of result.feedOptions) queue.unshift(each);
         }
-        console.log(latestData);
+        // console.log(latestData);
         if (queue.length > 0) {
             let curr = queue.pop();
 
             if (curr.type === 'screenshot') {
                 let cookies = await browser.cookies.getAll({ url: curr.url });
                 console.log('hi');
-                let res = await browser.runtime.sendNativeMessage(hostName, {
-                    cmd: 'js',
-                    param: {
+                // let res = await browser.runtime.sendNativeMessage(hostName, {
+                //     cmd: 'js',
+                //     param: {
+                //         url: curr.url,
+                //         selector: curr.selector,
+                //         cookies: btoa(JSON.stringify(cookies)),
+                //     }
+                // });
+
+                const rawResponse = await fetch('http://localhost:3000', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
                         url: curr.url,
                         selector: curr.selector,
                         cookies: btoa(JSON.stringify(cookies)),
-                    }
+                    })
                 });
-                const data = res.result;
+                const res = await rawResponse.json();
+                const data = res.data;
                 const hash = res.hash;
                 const title = res.title;
 
