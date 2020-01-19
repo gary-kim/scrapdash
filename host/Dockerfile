@@ -21,8 +21,6 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
 USER pptruser
 WORKDIR /app
 
-RUN npm ci
-
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROMIUM_EXECUTABLE "/usr/bin/chromium-browser"
 
