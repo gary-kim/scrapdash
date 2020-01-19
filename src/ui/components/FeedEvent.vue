@@ -5,8 +5,13 @@
             <div v-if="'time' in current" class="md-subhead" :title="time">{{ relativeTime }}</div>
         </md-card-header>
         <md-card-content v-if="'data' in current">
-            <div class="images" v-viewer>
-                <img :src="'data:image/png;base64,' + current.data" />
+            <div v-if="feed.type === Constants.FeedData.Type.SCREENSHOT">
+                <div class="images" v-viewer>
+                    <img :src="'data:image/png;base64,' + current.data" />
+                </div>
+            </div>
+            <div v-else-if="feed.type === Constants.FeedData.Type.TEXT">
+                {{ current.data }}
             </div>
         </md-card-content>
         <md-card-content v-if="! ('data' in current)">
@@ -23,6 +28,7 @@ Vue.use(Viewer)
 
 import * as helpers from '../../js/helpers';
 import moment from 'moment';
+import Constants from '../../js/Constants';
 
 
 export default {
@@ -53,6 +59,9 @@ export default {
                 return "Remote Lost";
             }
             return this.current.title || this.feed.url;
+        },
+        Constants() {
+            return Constants;
         }
     }
 }
@@ -71,6 +80,7 @@ export default {
     .images {
         max-height: 50vh;
         overflow: hidden;
+        cursor: pointer;
 
         img {
             width: 100%;

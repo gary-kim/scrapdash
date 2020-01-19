@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Constants from "./Constants";
 
 const CssSelectorGenerator = require('css-selector-generator');
 const browser = require('webextension-polyfill');
@@ -76,7 +77,6 @@ function main() {
 
         let $target = $(event.target);
 
-
         let generator = new CssSelectorGenerator;
 
         let selector = generator.getSelector(event.target); //=> #login
@@ -87,9 +87,9 @@ function main() {
             id: counter,
             url: window.location.href,
             selector,
-            type: 'screenshot',
+            type: event.button === 0? Constants.FeedData.Type.SCREENSHOT:Constants.FeedData.Type.TEXT,
         });
-        
+
 
         await browser.storage.local.set({
             feedOptions,
