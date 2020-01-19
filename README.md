@@ -14,6 +14,14 @@ A browser extension that creates a dashboard page with configuration to pull inf
 - For Chrome: Chrome Web Store
 - For Firefox: Check the releases page
 
+- To setup the screenshot server:
+
+```
+cd **project**/host
+npm install
+node main.js &
+```
+
 ## Development
 For Firefox
 ````bash
