@@ -7,7 +7,7 @@
                     <div class="md-subhead">{{ origin.type }} | {{ origin.selector }}</div>
                 </md-card-header>
                 <md-card-content>
-                    Creating a screenshot using a selector
+                    Creating a {{ origin.type }} object using <code>{{ origin.selector }}</code>
                 </md-card-content>
                 <md-card-actions>
                     <md-button @click="remove(index)">Remove</md-button>
