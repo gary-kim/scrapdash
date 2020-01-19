@@ -23,7 +23,7 @@ steps:
     commands:
       - (cd host && npm ci)
     environment:
-      - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
   - name: build-and-deploy
     image: plugins/docker
     settings:
