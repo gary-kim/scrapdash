@@ -21,6 +21,11 @@ cd **project**/host
 npm install
 node main.js &
 ```
+or pull from [Docker Hub](https://hub.docker.com/r/garykim/scrapdash-server).
+```bash
+docker pull garykim/scrapdash-server
+docker run -p 3000:3000 --cap-add=SYS_ADMIN -d garykim/scrapdash-server
+```
 
 ## Development
 For Firefox

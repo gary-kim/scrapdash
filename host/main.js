@@ -11,7 +11,11 @@ function atob(str) {
 }
 
 (async () => {
-    const browser = await puppeteer.launch();
+    let options = {};
+    if (process.env.CHROMIUM_EXECUTABLE) {
+        options.executablePath = process.env.CHROMIUM_EXECUTABLE;
+    }
+    const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
     app.use(express.json());
     app.post('/', async (req, res) => {
