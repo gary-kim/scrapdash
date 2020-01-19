@@ -58,7 +58,8 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: left;
 }
 .max-adjust-buttons {
     display: inherit;
