@@ -3,7 +3,7 @@
         <md-app md-waterfall md-mode="overlap">
             <md-app-toolbar class="md-primary md-large">
                 <div class="md-toolbar-row">
-                    <span class="md-title">Scrapdash</span>
+                    <span class="md-title"><img :src="logo" class="logo" />Scrapdash</span>
                     <md-tabs class="md-primary">
                         <md-tab id="tab-dashboard" md-label="Dashboard" @click="mode = Constants.Dashboard.Mode.DASHBOARD" />
                         <md-tab id="tab-remotes" md-label="Remotes" @click="mode = Constants.Dashboard.Mode.ORIGINS" />
@@ -39,11 +39,20 @@
                 mode: Constants.Dashboard.Mode.DASHBOARD,
                 Constants: Constants
             }
+        },
+        computed: {
+            logo() {
+                return browser.runtime.getURL('icons/128.png');
+            }
         }
     }
 </script>
 <style lang="less" scoped>
 .md-app-content {
     background-color: rgb(30, 34, 29) !important;
+}
+.logo {
+    height: 1.5em;
+    margin-right: 0.5em;
 }
 </style>
