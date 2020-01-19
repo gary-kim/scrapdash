@@ -1,7 +1,7 @@
 <template>
     <md-card>
         <md-card-header>
-            <div class="md-title" :title="associatedFeed" >{{ associatedFeed }}</div>
+            <div class="md-title" :title="associatedFeed" ><a style="color: inherit;" :href="feed.url">{{ associatedFeed }}</a></div>
             <div v-if="'time' in current" class="md-subhead" :title="time">{{ relativeTime }}</div>
         </md-card-header>
         <md-card-content v-if="'data' in current">

@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         getLatest(feedOption) {
-            return this.feed.latestData[feedOption.id] || { title: "Still Loading" };
+            return this.feed.latestData[feedOption.id] || { };
         },
         adjustDashboardMax(val) {
             helpers.setDashboardMax(this.feed.settings.dashboardMax + val);
