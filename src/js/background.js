@@ -1,4 +1,5 @@
 import * as helpers from './helpers.js';
+import Constants from "./Constants";
 const browser = require('webextension-polyfill');
 
 const hostName = 'io.github.tcode2k16.scrapdash';
@@ -30,7 +31,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         if (queue.length > 0) {
             let curr = queue.pop();
 
-            if (curr.type === 'screenshot') {
+            if (curr.type === 'screenshot' || curr.type === Constants.FeedData.Type.TEXT) {
                 let cookies = await browser.cookies.getAll({ url: curr.url });
                 console.log('hi');
                 // let res = await browser.runtime.sendNativeMessage(hostName, {
@@ -52,6 +53,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                         url: curr.url,
                         selector: curr.selector,
                         cookies: btoa(JSON.stringify(cookies)),
+                        type: curr.type,
                     })
                 });
                 const res = await rawResponse.json();

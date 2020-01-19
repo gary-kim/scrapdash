@@ -15,7 +15,7 @@ function atob(str) {
     const page = await browser.newPage();
     app.use(express.json());
     app.post('/', async (req, res) => {
-        
+
         console.log(req.body);
         // {
         //     selector,
@@ -46,17 +46,18 @@ function atob(str) {
         const title = await page.title();
         const el = await page.$(req.body.selector);
         const htmlVal = await page.$eval(req.body.selector, el => el.innerHTML);
+        const innerText = await page.$eval(req.body.selector, el => el.innerText);
         let md5sum = crypto.createHash('md5');
         md5sum.update(htmlVal);
         let hash = md5sum.digest('hex');
 
-        const img = await el.screenshot({ encoding: 'base64' });
+        const data = req.body.type === 'screenshot'?(await el.screenshot({ encoding: 'base64' })):(innerText);
         // const img = await el.screenshot({ encoding: 'base64', type: 'jpeg', 'quality': 80 });
         // await browser.close();
         // console.log(`<img src="data:image/png;base64,${img}"/>\n${hash}\n${title}`);
         // console.log(`${img}\n${hash}\n${title}`);
         res.json({
-            data: img,
+            data: data,
             hash,
             title,
         });

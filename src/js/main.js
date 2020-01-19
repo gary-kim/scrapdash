@@ -70,9 +70,12 @@ function main() {
         });
 
     }
+    const returnFalse = (e) => {
+        e.preventDefault();
+        return false;
+    }
     document.addEventListener('mousemove', drawBox);
     let selectFunc = async function (event) {
-
         if (event.target.id.indexOf('selector') !== -1 || event.target.tagName === 'BODY' || event.target.tagName === 'HTML') return;
 
         let $target = $(event.target);
@@ -102,10 +105,11 @@ function main() {
             each.remove();
         }
         document.removeEventListener('mousedown', selectFunc);
-
+        document.removeEventListener('contextmenu', returnFalse);
 
     }
     document.addEventListener('mousedown', selectFunc);
+    document.addEventListener('contextmenu', returnFalse);
 }
 
 main();
