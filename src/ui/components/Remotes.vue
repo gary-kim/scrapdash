@@ -4,9 +4,10 @@
             <md-card>
                 <md-card-header>
                     <div class="md-title">{{ origin.url }}</div>
+                    <div class="md-subhead">{{ origin.type }} | {{ origin.selector }}</div>
                 </md-card-header>
                 <md-card-content>
-                    Selector: {{ origin.selector }}
+                    Creating a screenshot using a selector
                 </md-card-content>
                 <md-card-actions>
                     <md-button @click="remove(index)">Remove</md-button>

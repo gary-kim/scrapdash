@@ -12,7 +12,7 @@ A browser extension that creates a dashboard page with configuration to pull inf
 
 ## Installation
 - For Chrome: Chrome Web Store
-- For Firefox: i don't use firefox lmao
+- For Firefox: Check the releases page
 
 ## Development
 For Firefox

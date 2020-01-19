@@ -1,8 +1,8 @@
 <template>
     <md-card>
         <md-card-header>
-            <div class="md-title">{{ associatedFeed }}</div>
-            <div v-if="'time' in current" class="md-subhead">{{ time }}</div>
+            <div class="md-title" :title="associatedFeed" >{{ associatedFeed }}</div>
+            <div v-if="'time' in current" class="md-subhead" :title="time">{{ relativeTime }}</div>
         </md-card-header>
         <md-card-content v-if="'data' in current">
             <div class="images" v-viewer>
@@ -42,10 +42,12 @@ export default {
         }
     },
     computed: {
-        time() {
-            return moment(helpers.getFeedDate(this.current)).fromNow();
+        relativeTime() {
+            return moment(this.time).fromNow();
         },
-
+        time() {
+            return helpers.getFeedDate(this.current);
+        },
         associatedFeed() {
             if (!this.feed) {
                 return "Remote Lost";
@@ -64,6 +66,15 @@ export default {
         display: block ruby;
         overflow-x: hidden;
         text-overflow: ellipsis;
+    }
+
+    .images {
+        max-height: 50vh;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 }
 </style>

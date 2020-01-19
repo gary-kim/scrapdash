@@ -1,4 +1,5 @@
 const browser = require('webextension-polyfill');
+const getInRange = require('get-in-range');
 
 export let feed = {
     data: [],
@@ -37,7 +38,7 @@ export function setFeedOptions(feedOptions) {
 }
 
 export function setDashboardMax(val) {
-    feed.settings.dashboardMax = val;
+    feed.settings.dashboardMax = getInRange(val, 1, 8);
     browser.storage.local.set({settings: JSON.parse(JSON.stringify(feed.settings))});
 }
 
