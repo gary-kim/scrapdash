@@ -2,17 +2,22 @@
 
 A browser extension that creates a dashboard page with configuration to pull information out of websites and scripts, including (but not limited to) grades, calendars, etc.
 
-## Features
-### Passwords
-- Stores your passwords (they aren't protected lol)
+<p align="center">
+    <img src="https://cdn.garykim.dev/img/scrapdash-1.jpg" height="250">
+</p>
+<p align="center">
+    <img src="https://cdn.garykim.dev/img/scrapdash-2.jpg" height="250">
+</p>
+<p align="center">
+    <img src="https://cdn.garykim.dev/img/scrapdash-3.jpg" height="250">
+</p>
 
 ## Browsers Supported
 - Firefox
 - Chrome
 
 ## Installation
-- For Chrome: Chrome Web Store
-- For Firefox: Check the releases page
+- Signed released are not yet available (coming soon!)
 
 - To setup the screenshot server:
 
@@ -40,7 +45,8 @@ npm run webpack:dev:chromium
 ````
 
 ## License
-00 -- License to Kill
 
+Copyright &copy; 2020 The Scrapdash Authors  
+See [AUTHORS](AUTHORS) file for full list.
 
-
+Source code licensed under [AGPL-3.0-or-later](LICENSE)
