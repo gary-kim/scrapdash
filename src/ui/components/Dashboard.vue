@@ -3,7 +3,7 @@
         <md-app md-waterfall md-mode="overlap">
             <md-app-toolbar class="md-primary md-large">
                 <div class="md-toolbar-row">
-                    <span class="md-title"><img :src="logo" class="logo" />Scrapdash</span>
+                    <span class="md-title" style="display: flex; align-items: center;"><img :src="logo" class="logo" />Scrapdash</span>
                     <md-tabs class="md-primary">
                         <md-tab id="tab-dashboard" md-label="Dashboard" @click="mode = Constants.Dashboard.Mode.DASHBOARD" />
                         <md-tab id="tab-remotes" md-label="Remotes" @click="mode = Constants.Dashboard.Mode.ORIGINS" />
