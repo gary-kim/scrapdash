@@ -10,7 +10,7 @@
                     <img :src="'data:image/png;base64,' + current.data" />
                 </div>
             </div>
-            <div v-else-if="feed.type === Constants.FeedData.Type.TEXT">
+            <div v-else-if="feed.type === Constants.FeedData.Type.TEXT" class="feed-text">
                 {{ current.data }}
             </div>
         </md-card-content>

@@ -8,7 +8,7 @@
                 <md-icon>remove</md-icon>
             </md-button>
         </span>
-        <Draggable v-model="options" class="draggable-flex" animation="100" draggable=".feed-event">
+        <Draggable v-model="options" class="draggable-flex" animation="100" draggable=".feed-event" filter=".feed-text" :preventOnFilter="false">
             <FeedEvent v-for="e in options" :key="e.id" :current="getLatest(e)" :feed="e" class="feed-event" :style="{width: width}" :dashboard-mode="true" />
         </Draggable>
     </div>
