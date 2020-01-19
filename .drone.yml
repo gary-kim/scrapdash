@@ -1,0 +1,39 @@
+kind: pipline
+name: test-build
+
+steps:
+  - name: node-modules
+    image: node:12
+    commands:
+      - (npm ci)
+  - name: build
+    image: node:12
+    commands:
+      - npm run webpack:build:firefox
+      - npm run clean
+      - npm run webpack:build:chromium
+      - npm run clean
+---
+kind: pipeline
+name: server-oci-image
+
+steps:
+  - name: node-modules
+    image: node:12
+    commands:
+      - (cd host && npm ci)
+  - name: build-and-deploy
+    image: plugins/docker
+    settings:
+      context: host
+      dockerfile: host/Dockerfile
+      password:
+        from_secret: docker_password
+      repo: garykim/scrapdash-server
+      username: garykim
+      tags: latest
+
+---
+kind: secret
+name: docker_password
+data: vE5jP6uDXxXeP49pedqMENY4Epmzkum6a00BRVvh6veWncs2wpugzwRCxYkVN/eVC2nXbY1oy+0LD6yaCjYWjw==

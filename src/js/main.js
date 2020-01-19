@@ -3,6 +3,7 @@ import Constants from "./Constants";
 
 const CssSelectorGenerator = require('css-selector-generator');
 const browser = require('webextension-polyfill');
+const Mousetrap = require('mousetrap');
 
 // alert('hello world');
 function main() {
@@ -99,15 +100,20 @@ function main() {
             counter: counter + 1,
         });
 
-        document.removeEventListener('mousemove', drawBox);
+        removeListeners();
 
+    }
+    const removeListeners = () => {
         for (let each of $('.scrapdash')) {
             each.remove();
         }
+        document.removeEventListener('mousemove', drawBox);
         document.removeEventListener('mousedown', selectFunc);
         document.removeEventListener('contextmenu', returnFalse);
-
     }
+
+    Mousetrap.bind('esc', removeListeners);
+
     document.addEventListener('mousedown', selectFunc);
     document.addEventListener('contextmenu', returnFalse);
 }
