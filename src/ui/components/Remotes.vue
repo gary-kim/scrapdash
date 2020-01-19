@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div>
+            <label>Remote Server: <input type="text" v-model="settings.serverURL"></label> | <label>Shared Secret: <input type="password" v-model="settings.serverSecret"></label>
+        </div>
         <div v-for="(origin, index) in origins" :key="origin.id">
             <md-card>
                 <md-card-header>
@@ -34,6 +37,14 @@ export default {
             },
             set(e) {
                 helpers.setFeedOptions(e);
+            }
+        },
+        settings: {
+            get() {
+                return helpers.feed.settings;
+            },
+            set(e) {
+                helpers.setSettings(e);
             }
         }
     },

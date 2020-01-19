@@ -12,7 +12,7 @@ export let feed = {
  * Update cached feed info
  */
 async function preloadData() {
-    const data = await browser.storage.local.get({feedData: [], feedOptions: [], latestData: [], settings: { "dashboardMax": 1 }});
+    const data = await browser.storage.local.get({feedData: [], feedOptions: [], latestData: [], settings: { "dashboardMax": 1, "serverURL": "http://localhost:3000", "serverSecret": "" }});
     feed.data = data.feedData;
     feed.options = data.feedOptions;
     feed.latestData = data.latestData;
@@ -40,6 +40,10 @@ export function setFeedOptions(feedOptions) {
 export function setDashboardMax(val) {
     feed.settings.dashboardMax = getInRange(val, 1, 8);
     browser.storage.local.set({settings: JSON.parse(JSON.stringify(feed.settings))});
+}
+
+export function setSettings(settings) {
+    browser.storage.local.set({settings: JSON.parse(JSON.stringify(settings))});
 }
 
 /**

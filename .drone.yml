@@ -40,7 +40,7 @@ steps:
       event:
         - push
       repo:
-        - gary-kim/scraper-dashboard
+        - gary-kim/scrapdash
 
 
 ---

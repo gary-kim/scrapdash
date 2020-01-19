@@ -44,7 +44,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                     //     }
                     // });
 
-                    const rawResponse = await fetch('http://localhost:3000', {
+                    const rawResponse = await fetch(helpers.feed.settings.serverURL, {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -55,6 +55,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                             selector: curr.selector,
                             cookies: btoa(JSON.stringify(cookies)),
                             type: curr.type,
+                            secret: helpers.feed.settings.serverSecret,
                         })
                     });
                     const res = await rawResponse.json();
@@ -77,7 +78,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                     }
                 }
             } catch (err) {
-                
+
             }
         }
     }

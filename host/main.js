@@ -21,6 +21,10 @@ function atob(str) {
     app.post('/', async (req, res) => {
 
         console.log(req.body);
+        if (process.env.SCRAPDASH_SHARED_SECRET && process.env.SCRAPDASH_SHARED_SECRET != req.body.secret) {
+            res.json({"error": "Unauthorized"}, 401);
+            return
+        }
         // {
         //     selector,
         //     cookies,
